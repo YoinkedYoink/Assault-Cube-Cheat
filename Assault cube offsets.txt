@@ -1,0 +1,48 @@
+[Player]
+
+[ac_client.exe+17E0A8] == player base POINTER
+
+                + 205 == name
+
+                + EC == health
+                + F0 == armour
+
+                + 140 == ammo
+                + 11C == reserve ammo
+                + 144 == grenades
+
+                + 2C == X/Z
+                + 28 == Z/X
+                + 30 == Y
+
+                + 10 == vel Z
+                + 14 == vel X
+                + 18 == vel Y
+
+                + 34 == look X
+                + 38 == look Y
+
+                + 4 == cam Z
+                + 8 == cam X
+                + C == cam Y
+
+                + 48 == gravity?
+                + 64 == state?
+                + 80 == walk direction
+                + 18C == thrown nades for match/round
+
+
+
+[Other Entities]
+
+entity list == [ac_client.exe+18AC04]
+max increment/players == ac_client.exe+0x18AC0C
+                         ac_client.exe+1837E0
+
+entity list + (increment*4) == enitity address
+
+                   + 205 == entity name
+                   + EC == entity health
+                   + 28 == entity Z
+                   + 2C == entity X
+                   + 30 == entity Y

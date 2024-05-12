@@ -1,0 +1,43 @@
+ac_client.exe+67EE1 - 8B 0D 00AC5800        - mov ecx,[ac_client.exe+18AC00] { (006AFFF8) }
+ac_client.exe+67EE9 - 8B 3D 0CAC5800        - mov edi,[ac_client.exe+18AC0C] { (8) }
+ac_client.exe+67EF5 - A1 04AC5800           - mov eax,[ac_client.exe+18AC04] { (0CEA8C70) }
+ac_client.exe+67EFA - 8B 04 B0              - mov eax,[eax+esi*4]
+
+ac_client.exe+67EFD - 85 C0                 - test eax,eax
+ac_client.exe+67EFF - 74 47                 - je ac_client.exe+67F48 |if non empty address|INVALID
+
+ac_client.exe+67F01 - 8A 50 76              - mov dl,[eax+76]
+ac_client.exe+67F04 - 80 FA 02              - cmp dl,02
+ac_client.exe+67F07 - 74 3F                 - je ac_client.exe+67F48 |if address+76 is 2|INVALID
+
+ac_client.exe+67F09 - 80 FA 05              - cmp dl,05
+ac_client.exe+67F0C - 74 3A                 - je ac_client.exe+67F48 |if address+76 is 5|INVALID
+
+ac_client.exe+67F0E - 8A 51 76              - mov dl,[ecx+76]
+ac_client.exe+67F11 - 80 FA 05              - cmp dl,05
+ac_client.exe+67F14 - 74 0E                 - je ac_client.exe+67F24 |if +18AC00+76 is 5|TEST AGAIN
+
+ac_client.exe+67F16 - 80 FA 01              - cmp dl,01
+ac_client.exe+67F19 - 75 1A                 - jne ac_client.exe+67F35 |if +18AC00+76 NOT 1|GOOD
+
+ac_client.exe+67F1B - 83 B9 18030000 00     - cmp dword ptr [ecx+00000318],00
+ac_client.exe+67F22 - 7E 11                 - jle ac_client.exe+67F35 |if +18AC00+318 <= 0|GOOD
+
+ac_client.exe+67F24 - 83 B9 18030000 02     - cmp dword ptr [ecx+00000318],02
+ac_client.exe+67F2B - 75 08                 - jne ac_client.exe+67F35 |if +18AC00+318 <= 2|GOOD
+
+ac_client.exe+67F2D - 39 B1 1C030000        - cmp [ecx+0000031C],esi
+ac_client.exe+67F33 - 74 13                 - je ac_client.exe+67F48 |if +18AC00+31C = esi|INVALID
+
+ac_client.exe+67F35 - 8B C8                 - mov ecx,eax |move address into +18AC00|
+
+ac_client.exe+67F37 - E8 E4A5FFFF           - call ac_client.exe+62520 |run this|
+ac_client.exe+67F3C - 8B 3D 0CAC5800        - mov edi,[ac_client.exe+18AC0C]
+ac_client.exe+67F42 - 8B 0D 00AC5800        - mov ecx,[ac_client.exe+18AC00]
+
+ac_client.exe+67F48 - 46                    - inc esi |esi add 1|
+
+ac_client.exe+67F49 - 3B F7                 - cmp esi,edi
+ac_client.exe+67F4B - 7C A8                 - jl ac_client.exe+67EF5 |if esi < edi| RESTART IF NOT ITERATE ALL
+
+
