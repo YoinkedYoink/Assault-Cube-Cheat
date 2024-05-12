@@ -7,8 +7,8 @@
                 + EC == health
                 + F0 == armour
 
-                + 140 == ammo
-                + 11C == reserve ammo
+                + 138 == ammo
+                + 114 == reserve ammo
                 + 144 == grenades
 
                 + 2C == X/Z

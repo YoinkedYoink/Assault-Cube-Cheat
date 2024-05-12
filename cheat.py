@@ -40,6 +40,8 @@ playerbase = getPointerAddress(pm.base_address + 0x17E0A8, offsets=[0])
 
 def printStats(entityAddr):
     print("\nName: " + str(pm.read_string(entityAddr + 0x205, 16)))
+    print("Health: " + str(pm.read_int(entityAddr + 0xEC)))
+    print("XYZ: "+ str(pm.read_float(entityAddr + 0x2C)) + " | " + str(pm.read_float(entityAddr + 0x30)) + " | " + str(pm.read_float(entityAddr + 0x28)))
 
 
 while True:
@@ -74,29 +76,3 @@ while True:
         else:
             pass
     cls()
-
-print("end")
-# print(pm.read_int(playerbase + 0xEC))
-# print(maxplayers)
-
-# pm.write_int(playerbase + 0xEC, 200)
-# print(pm.read_int(playerbase + 0xEC))
-
-# firstentity = None
-#     for i in range(0x0, 0x20, 0x1):
-#         entityaddress = pm.read_int(entitylist + (0x0+(i*4)))
-#         if not entityaddress == 0x0:
-
-#             if firstentity == None:
-#                 firstentity = entityaddress
-#             elif entityaddress == firstentity:
-#                 break
-
-#             print(hex(entityaddress))
-#             print("name: " + str(pm.read_string(entityaddress + 0x205, 16)))
-#             print("health: " + str(pm.read_int(entityaddress + 0xEC)))
-#             print("XYZ: "+ str(pm.read_float(entityaddress + 0x2C)) + " | " + str(pm.read_float(entityaddress + 0x30)) + " | " + str(pm.read_float(entityaddress + 0x28)))
-#             print("\n")
-#             time.sleep(0.1)
-#         else:
-#             pass
