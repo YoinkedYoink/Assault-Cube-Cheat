@@ -7,8 +7,8 @@
                 + EC == health
                 + F0 == armour
 
-                + 138 == ammo
-                + 114 == reserve ammo
+                + 140 == ammo               < Need to find how to get current weapon
+                + 11C == reserve ammo       < 5 different addresses for each
                 + 144 == grenades
 
                 + 2C == X/Z

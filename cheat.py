@@ -39,7 +39,8 @@ playerbase = getPointerAddress(pm.base_address + 0x17E0A8, offsets=[0])
 
 
 def printStats(entityAddr):
-    print("\nName: " + str(pm.read_string(entityAddr + 0x205, 16)))
+    print("\n    "+str(entityAddr)+"    ")
+    print("Name: " + str(pm.read_string(entityAddr + 0x205, 16)))
     print("Health: " + str(pm.read_int(entityAddr + 0xEC)))
     print("XYZ: "+ str(pm.read_float(entityAddr + 0x2C)) + " | " + str(pm.read_float(entityAddr + 0x30)) + " | " + str(pm.read_float(entityAddr + 0x28)))
 
